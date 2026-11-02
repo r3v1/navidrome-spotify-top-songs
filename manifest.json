@@ -1,0 +1,43 @@
+{
+    "name": "Spotify Top Songs",
+    "author": "datua",
+    "version": "1.0.0",
+    "description": "Serves Navidrome's artist top songs from Spotify (or Last.fm / Deezer) instead of ListenBrainz",
+    "permissions": {
+        "http": {
+            "reason": "Fetch artist top tracks from Spotify, Last.fm, Deezer and MusicBrainz",
+            "requiredHosts": [
+                "open.spotify.com",
+                "musicbrainz.org",
+                "ws.audioscrobbler.com",
+                "api.deezer.com"
+            ]
+        },
+        "cache": {
+            "reason": "Cache top song lookups so artist pages do not hammer the APIs"
+        }
+    },
+    "config": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "sources": {
+                    "type": "string",
+                    "title": "Source order",
+                    "description": "Comma separated: spotify, lastfm, deezer. First one with results wins. spotify/deezer need no key, spotify is capped at 10 tracks.",
+                    "default": "spotify,lastfm,deezer"
+                },
+                "lastfm_api_key": {
+                    "type": "string",
+                    "title": "Last.fm API key",
+                    "description": "Free key from https://www.last.fm/api/account/create"
+                }
+            }
+        },
+        "uiSchema": {
+            "lastfm_api_key": {
+                "ui:widget": "password"
+            }
+        }
+    }
+}

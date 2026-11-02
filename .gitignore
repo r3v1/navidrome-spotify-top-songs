@@ -1,0 +1,12 @@
+# Build output
+plugin.wasm
+*.ndp
+
+# Go
+/vendor/
+*.test
+*.out
+
+# OS / editor cruft
+.DS_Store
+*.swp
